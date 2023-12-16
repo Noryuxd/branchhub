@@ -1,14 +1,21 @@
 "use client";
 
-import { useFormState } from "react-dom";
 import grabUsername from "@/actions/grabUsername";
 import RightIcon from "../icons/RightIcon";
+import { useState } from "react";
+import { redirect } from "next/navigation";
+import SubmitButton from "../buttons/SubmitButton";
 
 const UsernameForm = ({ desiredUsername }) => {
-  const [state] = useFormState();
+  const [taken, setTaken] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  async function handleSubmit(formData) {
+    const result = await grabUsername(formData);
+    setTaken(result === false);
+  }
 
   return (
-    <form action={grabUsername}>
+    <form action={handleSubmit}>
       <h1 className="text-4xl font-bold text-violet-800 text-center mb-6">
         Grab your username
       </h1>
@@ -21,13 +28,16 @@ const UsernameForm = ({ desiredUsername }) => {
           type="text"
           placeholder="username"
         />
-        <button
-          className="bg-violet-800 text-white py-2 px-4 gap-2 items-center justify-center mx-auto w-full flex"
-          type="submit"
-        >
+        {taken && (
+          <div className=" text-red-500 text-center -2 mb-2">
+            This username is already taken
+          </div>
+        )}
+        {isLoading ? "Loading" : "not loading"}
+        <SubmitButton>
           <span>Claim now</span>
           <RightIcon />
-        </button>
+        </SubmitButton>
       </div>
     </form>
   );
