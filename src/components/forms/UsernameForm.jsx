@@ -3,12 +3,10 @@
 import grabUsername from "@/actions/grabUsername";
 import RightIcon from "../icons/RightIcon";
 import { useState } from "react";
-import { redirect } from "next/navigation";
 import SubmitButton from "../buttons/SubmitButton";
 
 const UsernameForm = ({ desiredUsername }) => {
   const [taken, setTaken] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
   async function handleSubmit(formData) {
     const result = await grabUsername(formData);
     setTaken(result === false);
@@ -33,7 +31,6 @@ const UsernameForm = ({ desiredUsername }) => {
             This username is already taken
           </div>
         )}
-        {isLoading ? "Loading" : "not loading"}
         <SubmitButton>
           <span>Claim now</span>
           <RightIcon />

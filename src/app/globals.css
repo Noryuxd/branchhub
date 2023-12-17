@@ -5,3 +5,15 @@
 body {
   @apply bg-gray-100;
 }
+.radio-togglers {
+  @apply p-1 border border-violet-800 bg-gray-200 inline-flex;
+}
+.radio-togglers span {
+  @apply p-2 px-4 block text-gray-500;
+}
+.radio-togglers input[type="radio"] {
+  @apply hidden;
+}
+.radio-togglers input[type="radio"]:checked + span {
+  @apply bg-white text-violet-800;
+}
