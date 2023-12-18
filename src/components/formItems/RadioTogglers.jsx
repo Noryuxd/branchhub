@@ -7,7 +7,7 @@ const RadioTogglers = ({ options }) => {
         <label>
           <input type="radio" name="bgType" value={option.value} />
           <div>
-            <FontAwesomeIcon icon={option.icon} />
+            <FontAwesomeIcon className={"h-6 w-6" }icon={option.icon} />
             <span>{option.label}</span>
           </div>
         </label>

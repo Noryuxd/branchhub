@@ -20,9 +20,8 @@ const SubmitButton = ({ children, className = "" }) => {
           spin
         />
       )}
-      {!pending && children}   
+      {!pending && children}
     </button>
-    // 4:48
   );
 };
 

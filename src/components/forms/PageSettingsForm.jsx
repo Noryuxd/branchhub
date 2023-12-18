@@ -71,7 +71,7 @@ const PageSettingsForm = ({ page, user }) => {
           />
           <div className="max-w-[200px] mx-auto">
             <SubmitButton>
-              <FontAwesomeIcon icon={faSave} />
+              <FontAwesomeIcon icon={faSave} className={"h-6 w-6"} />
               Save
             </SubmitButton>
           </div>
