@@ -8,8 +8,12 @@ import SubmitButton from "../buttons/SubmitButton";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { savePageSettings } from "@/actions/pageActions";
 import toast from "react-hot-toast";
+import { useState } from "react";
 
 const PageSettingsForm = ({ page, user }) => {
+  const [bgType, setBgType] = useState(page.bgType);
+  const [bgColor, setBgColor] = useState(page.bgColor);
+
   async function saveBaseSettings(formData) {
     const result = await savePageSettings(formData);
     if (result) {
@@ -22,9 +26,8 @@ const PageSettingsForm = ({ page, user }) => {
       <form action={saveBaseSettings}>
         <div
           className=" py-16 flex justify-center items-center"
-          style={{ backgroundColor: page.bgColor }}
+          style={{ backgroundColor: bgColor }}
         >
-          {/* 4:58 */}
           <div>
             <RadioTogglers
               defaultValue={page.bgType}
@@ -32,19 +35,32 @@ const PageSettingsForm = ({ page, user }) => {
                 { value: "color", icon: faPalette, label: "Color" },
                 { value: "image", icon: faImage, label: "Image" },
               ]}
+              onChange={(value) => setBgType(value)}
             />
-            <div className="bg-gray-200 shadow text-gray-700 p-2 mt-2 ">
-              {page.bgType === "color" && (
+            {bgType === "color" && (
+              <div className="bg-gray-200 shadow text-gray-700 p-2 mt-2 ">
                 <div className="mt-2 flex justify-center gap-2">
                   <span>Background color</span>
                   <input
                     type="color"
                     name="bgColor"
+                    onChange={(e) => setBgColor(e.target.value)}
                     defaultValue={page.bgColor}
                   />
                 </div>
-              )}
-            </div>
+              </div>
+            )}
+            {bgType === "image" && (
+              <div className="flex justify-center">
+                <input type="file" />
+                <button
+                  className="bg-white shadow px-4 py-2 mt-2"
+                  type="button"
+                >
+                  Change image
+                </button>
+              </div>
+            )}
           </div>
         </div>
         <div className="flex justify-center -mb-12">
