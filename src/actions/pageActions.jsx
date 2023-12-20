@@ -6,10 +6,17 @@ import mongoose from "mongoose";
 import { getServerSession } from "next-auth";
 
 export async function savePageSettings(formData) {
-  mongoose.connect(process.env.MONGO_URI);
+  mongoose.connect(process.env.MONGODB_URI);
   const session = await getServerSession(authOptions);
   if (session) {
-    const dataKeys = ["displayName", "location", "bio", "bgType", "bgColor"];
+    const dataKeys = [
+      "displayName",
+      "location",
+      "bio",
+      "bgType",
+      "bgColor",
+      "bgImage",
+    ];
 
     const dataToUpdate = {};
     for (const key of dataKeys) {

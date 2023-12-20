@@ -32,6 +32,10 @@ const PageSchema = new Schema(
       type: String,
       default: "#0000",
     },
+    bgImage: {
+      type: String,
+      default: "",
+    },
   },
   { timestamps: true }
 );
