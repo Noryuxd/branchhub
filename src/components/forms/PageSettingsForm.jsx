@@ -181,6 +181,7 @@ const PageSettingsForm = ({ page, user }) => {
               Bio
             </label>
             <textarea
+              className=" focus:outline-2 outline-violet-800"
               id="bioInput"
               name="bio"
               defaultValue={page.bio}

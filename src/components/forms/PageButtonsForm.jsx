@@ -145,14 +145,12 @@ const PageButtonsForm = ({ user, page }) => {
         <ReactSortable list={activeButtons} setList={setActiveButtons}>
           {activeButtons.map((button) => (
             <div className="mb-4 flex items-center">
-              <div className="w-48 flex gap-2 text-gray-700 items-center p-2 ">
+              <div className="w-48 flex gap-2 text-gray-700 items-center p-2 hover:text-violet-800 cursor-pointer">
                 <FontAwesomeIcon
                   icon={faGripLines}
-                  className={
-                    "h-4 w-4 py-2 px-2 cursor-pointer hover:text-violet-800"
-                  }
+                  className={"h-5 w-5 py-2 px-2"}
                 />
-                <FontAwesomeIcon icon={button.icon} className={"h-4 w-4"} />
+                <FontAwesomeIcon icon={button.icon} className={"h-5 w-5"} />
                 <span>{button.label}</span>
               </div>
               <input
@@ -167,27 +165,27 @@ const PageButtonsForm = ({ user, page }) => {
                 type="button"
                 className="py-2 px-4 cursor-pointer hover:text-violet-800 bg-gray-200"
               >
-                <FontAwesomeIcon icon={faTrash} className={"h-4 w-4"} />
+                <FontAwesomeIcon icon={faTrash} className={"h-5 w-5"} />
               </button>
             </div>
           ))}
         </ReactSortable>
-        <div className="flex flex-wrap gap-2 mt-4 border-y py-4">
+        <div className="flex flex-wrap gap-2 mt-4 border-y py-4 text-gray-700">
           {availableButtons.map((button) => (
             <button
               type="button"
               onClick={() => addButtonToProfile(button)}
               className=" flex gap-1 items-center p-2 bg-gray-100 hover:text-violet-800"
             >
-              <FontAwesomeIcon icon={button.icon} className={"h-4 w-4"} />
+              <FontAwesomeIcon icon={button.icon} className={"h-5 w-5"} />
               <span>{button.label}</span>
-              <FontAwesomeIcon icon={faPlus} className={"h-4 w-4"} />
+              <FontAwesomeIcon icon={faPlus} className={"h-5 w-5"} />
             </button>
           ))}
         </div>
         <div className="max-w-[200px] mx-auto mt-4">
           <SubmitButton>
-            <FontAwesomeIcon icon={faSave} className={"h-6 w-6"} />
+            <FontAwesomeIcon icon={faSave} className={"h-5 w-5"} />
             Save
           </SubmitButton>
         </div>
