@@ -26,3 +26,7 @@ label.input-label {
 .radio-togglers input[type="radio"]:checked + div {
   @apply bg-white text-violet-800;
 }
+
+.sortable-ghost {
+  opacity: 0.5;
+}

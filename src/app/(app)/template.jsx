@@ -25,7 +25,7 @@ export default async function AppTemplate({ children }) {
       <body className={lato.className}>
         <Toaster />
         <main className="flex min-h-screen">
-          <aside className="bg-white p-4 w-48 shadow">
+          <aside className="bg-white p-12 w-48 shadow">
             <div className="rounded-full overflow-hidden w-24 mx-auto">
               <Image
                 src={session.user.image}
@@ -38,9 +38,7 @@ export default async function AppTemplate({ children }) {
               <AppSidebar />
             </div>
           </aside>
-          <div className="grow">
-            <div className="bg-white m-16 p-4 shadow">{children}</div>
-          </div>
+          <div className="grow">{children}</div>
         </main>
       </body>
     </html>
