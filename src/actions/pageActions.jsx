@@ -2,6 +2,7 @@
 
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import { Page } from "@/models/page";
+import { User } from "@/models/user";
 import mongoose from "mongoose";
 import { getServerSession } from "next-auth";
 
@@ -16,6 +17,7 @@ export async function savePageSettings(formData) {
       "bgType",
       "bgColor",
       "bgImage",
+      "avatar",
     ];
 
     const dataToUpdate = {};
@@ -26,6 +28,19 @@ export async function savePageSettings(formData) {
     }
 
     await Page.updateOne({ owner: session?.user?.email }, dataToUpdate);
+
+    if (formData.has("avatar")) {
+      const avatarLink = formData.get("avatar");
+      await User.updateOne(
+        {
+          email: session.user?.email,
+        },
+        {
+          image: avatarLink,
+        }
+      );
+    }
+
     return true;
   }
 

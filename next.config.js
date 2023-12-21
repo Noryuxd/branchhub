@@ -5,6 +5,9 @@ const nextConfig = {
       {
         hostname: "*.googleusercontent.com",
       },
+      {
+        hostname: "branchhub.s3.amazonaws.com",
+      },
     ],
   },
 };

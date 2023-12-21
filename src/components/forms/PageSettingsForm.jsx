@@ -19,6 +19,7 @@ const PageSettingsForm = ({ page, user }) => {
   const [bgType, setBgType] = useState(page.bgType);
   const [bgColor, setBgColor] = useState(page.bgColor);
   const [bgImage, setBgImage] = useState(page.bgImage);
+  const [avatar, setAvatar] = useState(user?.image);
 
   async function saveBaseSettings(formData) {
     const result = await savePageSettings(formData);
@@ -27,7 +28,7 @@ const PageSettingsForm = ({ page, user }) => {
     }
   }
 
-  const handleFileChange = async (e) => {
+  const upload = async (e, callbackFunction) => {
     const file = e.target.files?.[0];
 
     if (file) {
@@ -40,8 +41,8 @@ const PageSettingsForm = ({ page, user }) => {
         }).then((response) => {
           if (response.ok) {
             response.json().then((link) => {
-              setBgImage(link);
-              resolve();
+              callbackFunction(link);
+              resolve(link);
             });
           } else {
             reject();
@@ -49,7 +50,7 @@ const PageSettingsForm = ({ page, user }) => {
         });
       });
 
-      await toast.promise(uploadPromise, {
+      toast.promise(uploadPromise, {
         loading: "Uploading...",
         success: "Uploaded successfully ! ",
         error: "Upload error !",
@@ -57,7 +58,17 @@ const PageSettingsForm = ({ page, user }) => {
     }
   };
 
-  // 5:58 ....
+  const handleCoverImageChange = async (e) => {
+    await upload(e, (link) => {
+      setBgImage(link);
+    });
+  };
+
+  const handleAvatarImageChange = async (e) => {
+    await upload(e, (link) => {
+      setAvatar(link);
+    });
+  };
 
   return (
     <div className="-m-4">
@@ -101,13 +112,13 @@ const PageSettingsForm = ({ page, user }) => {
                   <input type="hidden" name="bgImage" value={bgImage} />
                   <input
                     type="file"
-                    onChange={handleFileChange}
+                    onChange={handleCoverImageChange}
                     className="hidden"
                   />
                   <div className="flex gap-2 items-center cursor-pointer">
                     <FontAwesomeIcon
                       icon={faCloudArrowUp}
-                      className="text-gray-500"
+                      className="text-gray-500 w-6 h-6"
                     />
                     <span>Change image</span>
                   </div>
@@ -117,13 +128,31 @@ const PageSettingsForm = ({ page, user }) => {
           </div>
         </div>
         <div className="flex justify-center -mb-12">
-          <Image
-            className="rounded-full relative -top-8 border-4 shadow-black shadow border-white"
-            src={user?.image}
-            alt={"avatar"}
-            width={128}
-            height={128}
-          />
+          <div className="relative -top-8 w-[128px] h-[128px]">
+            <div className=" overflow-hidden h-full rounded-full  border-4 shadow-black/50 shadow border-white">
+              <Image
+                className="w-full h-full object-cover"
+                src={avatar}
+                alt={"avatar"}
+                width={128}
+                height={128}
+              />
+            </div>
+
+            <label
+              htmlFor="avatarInput"
+              className="absolute -bottom-2 -right-2 bg-white p-2 rounded-full shadow shadow-black/50  aspect-square flex items-center cursor-pointer"
+            >
+              <FontAwesomeIcon className={"w-6 h-6"} icon={faCloudArrowUp} />
+            </label>
+            <input
+              onChange={handleAvatarImageChange}
+              type="file"
+              id="avatarInput"
+              className="hidden"
+            />
+            <input type="hidden" name="avatar" value={avatar} />
+          </div>
         </div>
         <div className="p-4">
           <label className="input-label" htmlFor="nameInput">
