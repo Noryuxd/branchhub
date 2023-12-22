@@ -40,6 +40,10 @@ const PageSchema = new Schema(
       type: Object,
       default: {},
     },
+    links: {
+      type: Object,
+      default: [],
+    },
   },
   { timestamps: true }
 );

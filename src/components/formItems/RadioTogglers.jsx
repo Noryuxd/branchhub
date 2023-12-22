@@ -13,7 +13,7 @@ const RadioTogglers = ({ options, defaultValue, onChange }) => {
             defaultChecked={defaultValue === option.value}
           />
           <div>
-            <FontAwesomeIcon className={"h-6 w-6"} icon={option.icon} />
+            <FontAwesomeIcon className={"h-5 w-5"} icon={option.icon} />
             <span>{option.label}</span>
           </div>
         </label>

@@ -14,11 +14,14 @@ import React, { useState } from "react";
 import { ReactSortable } from "react-sortablejs";
 import { upload } from "@/libs/upload";
 import Image from "next/image";
+import { savePageLinks } from "@/actions/pageActions";
+import toast from "react-hot-toast";
 
 const PageLinksForm = ({ page, user }) => {
   const [links, setLinks] = useState(page.links || []);
-  function save(formData) {
-    
+  async function save() {
+    await savePageLinks(links);
+    toast.success("Saved !");
   }
   function addNewLink() {
     setLinks((prev) => {
@@ -79,17 +82,17 @@ const PageLinksForm = ({ page, user }) => {
           <span>Add new</span>
         </button>
         <div>
-          <ReactSortable list={links} setList={setLinks}>
+          <ReactSortable handle={".handle"} list={links} setList={setLinks}>
             {links.map((link) => (
-              <div key={link.key} className="mt-8 flex gap-2 items-center ">
-                {/* <div>
+              <div key={link.key} className="mt-8 flex gap-2 items-center">
+                <div className="handle">
                   <FontAwesomeIcon
-                    className="text-gray-700 mr-2 "
+                    className="text-gray-700 mr-2 cursor-pointer hover:text-violet-800 h-5 w-5 py-2 px-2"
                     icon={faGripLines}
                   />
-                </div> */}
+                </div>
                 <div className="text-center">
-                  <div className="bg-gray-100 relative aspect-square overflow-hidden w-16 h-16 inline-flex justify-center items-center">
+                  <div className=" relative aspect-square overflow-hidden w-16 h-16 inline-flex justify-center items-center">
                     {link.icon && (
                       <Image
                         className=" object-cover h-full w-full"

@@ -64,12 +64,13 @@ const PageSettingsForm = ({ page, user }) => {
                 onChange={(value) => setBgType(value)}
               />
               {bgType === "color" && (
-                <div className="bg-gray-200 shadow text-gray-700 p-2 mt-2 ">
-                  <div className="mt-2 flex justify-center gap-2">
+                <div className="bg-white shadow text-gray-700 px-4 py-1 mt-2 ">
+                  <div className="mt-2 flex justify-center items-center gap-2">
                     <span>Background color</span>
                     <input
                       type="color"
                       name="bgColor"
+                      className=" bg-white"
                       onChange={(e) => setBgColor(e.target.value)}
                       defaultValue={page.bgColor}
                     />
@@ -77,9 +78,9 @@ const PageSettingsForm = ({ page, user }) => {
                 </div>
               )}
               {bgType === "image" && (
-                <div className="flex justify-center">
+                <div className="flex justify-center ">
                   <label
-                    className="bg-white shadow px-4 py-2 mt-2 flex gap-2"
+                    className="bg-white shadow px-4 py-2 mt-2 flex gap-2 text-gray-700 hover:text-violet-800 cursor-pointer"
                     type="button"
                   >
                     <input type="hidden" name="bgImage" value={bgImage} />
@@ -88,10 +89,10 @@ const PageSettingsForm = ({ page, user }) => {
                       onChange={handleCoverImageChange}
                       className="hidden"
                     />
-                    <div className="flex gap-2 items-center cursor-pointer">
+                    <div className="flex gap-2 items-center">
                       <FontAwesomeIcon
                         icon={faCloudArrowUp}
-                        className="text-gray-500 w-6 h-6"
+                        className=" w-6 h-6"
                       />
                       <span>Change image</span>
                     </div>
@@ -114,7 +115,7 @@ const PageSettingsForm = ({ page, user }) => {
 
               <label
                 htmlFor="avatarInput"
-                className="absolute -bottom-2 -right-2 bg-white p-2 rounded-full shadow shadow-black/50  aspect-square flex items-center cursor-pointer"
+                className="absolute -bottom-2 -right-2 bg-white p-2 rounded-full shadow shadow-black/50  aspect-square flex items-center cursor-pointer text-gray-700 hover:text-violet-800"
               >
                 <FontAwesomeIcon className={"w-6 h-6"} icon={faCloudArrowUp} />
               </label>

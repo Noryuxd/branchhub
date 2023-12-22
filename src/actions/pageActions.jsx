@@ -9,6 +9,7 @@ import { getServerSession } from "next-auth";
 export async function savePageSettings(formData) {
   mongoose.connect(process.env.MONGODB_URI);
   const session = await getServerSession(authOptions);
+
   if (session) {
     const dataKeys = [
       "displayName",
@@ -61,4 +62,20 @@ export async function savePageButtons(formData) {
     return true;
   }
   return false;
+}
+
+export async function savePageLinks(links) {
+  mongoose.connect(process.env.MONGODB_URI);
+  const session = await getServerSession(authOptions);
+
+  if (session) {
+    await Page.updateOne(
+      {
+        owner: session?.user?.email,
+      },
+      { links }
+    );
+  } else {
+    return false;
+  }
 }
