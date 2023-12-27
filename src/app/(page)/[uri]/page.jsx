@@ -40,6 +40,13 @@ export const buttonsIcons = {
   telegram: faTelegram,
 };
 
+function buttonLink(key, value) {
+  if (key === "email") {
+    return "mailto:" + value;
+  }
+  return value;
+}
+
 const UserPage = async ({ params }) => {
   const uri = params.uri;
   mongoose.connect(process.env.MONGODB_URI);
@@ -47,9 +54,9 @@ const UserPage = async ({ params }) => {
   const user = await User.findOne({ email: page.owner });
 
   return (
-    <div className=" bg-violet-950 text-white min-h-screen">
+    <div className="  min-h-screen">
       <div
-        className="h-36 bg-gray-500  bg-cover bg-center"
+        className="h-48 bg-cover bg-center"
         style={
           page.bgType === "color"
             ? { backgroundColor: page.bgColor }
@@ -66,7 +73,7 @@ const UserPage = async ({ params }) => {
         />
       </div>
       <h2 className="text-2xl text-center mb-1">{page.displayName}</h2>
-      <h3 className="text-md flex gap-2 justify-center items-center text-white/70">
+      <h3 className="text-md flex gap-2 justify-center items-center text-violet-800">
         <FontAwesomeIcon className={"w-6 h-6"} icon={faLocationDot} />
         <span>{page.location}</span>
       </h3>
@@ -76,8 +83,8 @@ const UserPage = async ({ params }) => {
       <div className="flex gap-2 justify-center items-center pb-4 mt-4">
         {Object.keys(page.buttons).map((buttonKey) => (
           <Link
-            href={"/"}
-            className="rounded-full bg-white border hover:text-white hover:bg-violet-950 hover:border text-violet-950 p-3 flex justify-center items-center"
+            href={buttonLink(buttonKey, page.buttons[buttonKey])}
+            className="rounded-full bg-violet-800 border border-2 hover:text-violet-800 hover:bg-white hover:border hover:border-2 text-white p-3 flex justify-center items-center"
           >
             <FontAwesomeIcon
               className={"w-6 h-6"}
@@ -88,9 +95,9 @@ const UserPage = async ({ params }) => {
       </div>
       <div className="max-w-2xl mx-auto grid md:grid-cols-2 gap-6 p-4 px-4">
         {page.links.map((link) => (
-          <Link href={link.url} className="bg-violet-900 p-2 block flex">
+          <Link href={link.url} className="bg-violet-800 rounded p-2 block flex">
             <div className=" relative -left-4 overflow-hidden w-16">
-              <div className="w-16 h-16 aspect-square relative bg-violet-500 flex items-center justify-center">
+              <div className="w-16 h-16 aspect-square relative flex items-center justify-center">
                 {link.icon && (
                   <Image
                     className="w-full h-full object-cover"
@@ -108,7 +115,7 @@ const UserPage = async ({ params }) => {
             <div className="flex items-center justify-center shrink grow-0 overflow-hidden">
               <div>
                 <h3>{link.title}</h3>
-                <p className="text-white/50 h-6 overflow-hidden">
+                <p className=" h-6 overflow-hidden">
                   {link.subtitle}
                 </p>
               </div>
