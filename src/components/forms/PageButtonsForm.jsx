@@ -29,7 +29,9 @@ import { savePageButtons } from "@/actions/pageActions";
 import toast from "react-hot-toast";
 import { ReactSortable } from "react-sortablejs";
 
-const allButtons = [
+
+
+export const allButtons = [
   {
     key: "email",
     label: "E-mail",
@@ -142,7 +144,11 @@ const PageButtonsForm = ({ user, page }) => {
     <SectionBox>
       <form action={saveButtons}>
         <h2 className="text-2xl font-bold mb-4 text-violet-800">Buttons</h2>
-        <ReactSortable handle={".handle"} list={activeButtons} setList={setActiveButtons}>
+        <ReactSortable
+          handle={".handle"}
+          list={activeButtons}
+          setList={setActiveButtons}
+        >
           {activeButtons.map((button) => (
             <div className="mb-4 flex items-center">
               <div className="w-48 flex gap-2 text-gray-700 handle items-center p-2 hover:text-violet-800 cursor-pointer">

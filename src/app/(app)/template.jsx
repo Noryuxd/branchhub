@@ -6,6 +6,11 @@ import { redirect } from "next/navigation";
 import Image from "next/image";
 import AppSidebar from "@/components/layout/AppSidebar";
 import { Toaster } from "react-hot-toast";
+import { Page } from "@/models/page";
+import mongoose from "mongoose";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faLink } from "@fortawesome/free-solid-svg-icons";
+import Link from "next/link";
 
 const lato = Lato({ subsets: ["latin"], weight: ["400", "700"] });
 
@@ -19,23 +24,42 @@ export default async function AppTemplate({ children }) {
   if (!session) {
     redirect("/");
   }
+  mongoose.connect(process.env.MONGODB_URI);
+  const page = await Page.findOne({ owner: session.user.email });
 
   return (
     <html lang="en">
       <body className={lato.className}>
         <Toaster />
         <main className="flex min-h-screen">
-          <aside className="bg-white p-12 w-48 shadow">
-            <div className="rounded-full overflow-hidden w-24 mx-auto">
-              <Image
-                src={session.user.image}
-                alt={"avatar"}
-                width={256}
-                height={256}
-              />
-            </div>
-            <div className="text-center">
-              <AppSidebar />
+          <aside className="bg-white p-10 w-48 shadow ">
+            <div className="sticky top-0 pt-2">
+              <div className="rounded-full overflow-hidden w-24 mx-auto">
+                <Image
+                  src={session.user.image}
+                  alt={"avatar"}
+                  width={256}
+                  height={256}
+                />
+              </div>
+              {page && (
+                <Link
+                  target="_blank"
+                  href={"/" + page.uri}
+                  className="text-center mt-4 flex gap-1 items-center hover:text-violet-800"
+                >
+                  <FontAwesomeIcon
+                    icon={faLink}
+                    size="lg"
+                    className="text-violet-800"
+                  />
+                  <span className="text-xl text-violet-500">/</span>
+                  <span>{page.uri}</span>
+                </Link>
+              )}
+              <div className="text-center">
+                <AppSidebar />
+              </div>
             </div>
           </aside>
           <div className="grow">{children}</div>
