@@ -98,6 +98,8 @@ const UserPage = async ({ params }) => {
       <div className="max-w-2xl mx-auto grid md:grid-cols-2 gap-6 p-4 px-2">
         {page.links.map((link) => (
           <Link
+            target="_blank"
+            ping={"/api/click?url=" + btoa(link.url)}
             href={link.url}
             className="bg-violet-800 hover:bg-gray-100 hover:text-violet-800 hover:border-violet-800 border-2 text-white  rounded p-2 block flex"
           >
