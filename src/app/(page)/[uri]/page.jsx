@@ -53,7 +53,7 @@ const UserPage = async ({ params }) => {
   mongoose.connect(process.env.MONGODB_URI);
   const page = await Page.findOne({ uri });
   const user = await User.findOne({ email: page.owner });
-  await Event.create({ uri: uri, type: "view" });
+  await Event.create({ uri: uri, page: uri, type: "view" });
 
   return (
     <div className="  min-h-screen">
@@ -99,7 +99,7 @@ const UserPage = async ({ params }) => {
         {page.links.map((link) => (
           <Link
             target="_blank"
-            ping={"/api/click?url=" + btoa(link.url)}
+            ping={"/api/click?url=" + btoa(link.url) + "&page=" + page.uri}
             href={link.url}
             className="bg-violet-800 hover:bg-gray-100 hover:text-violet-800 hover:border-violet-800 border-2 text-white  rounded p-2 block flex"
           >

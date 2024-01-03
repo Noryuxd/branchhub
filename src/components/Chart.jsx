@@ -7,12 +7,13 @@ import {
   Tooltip,
   XAxis,
   YAxis,
+  ResponsiveContainer,
 } from "recharts";
 import { addDays, differenceInDays, formatISO9075, parseISO } from "date-fns";
 
 const Chart = ({ data }) => {
   const xLabelKey = Object.keys(data[0]).find((key) => key !== "date");
-
+  //282882
   const dataWithoutGaps = [];
   data.forEach((value, index) => {
     const date = value.date;
@@ -39,19 +40,36 @@ const Chart = ({ data }) => {
 
   return (
     <div>
-      <LineChart
-        width={760}
-        height={250}
-        data={dataWithoutGaps}
-        margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
-      >
-        <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="date" />
-        <YAxis />
-        <Tooltip />
-        <Legend />
-        <Line type="monotone" dataKey={xLabelKey} stroke="#82ca9d" />
-      </LineChart>
+      <ResponsiveContainer width="100%" height={200}>
+        <LineChart
+          width={760}
+          height={250}
+          data={dataWithoutGaps}
+          margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
+        >
+          <CartesianGrid horizontal={false} strokeWidth={2} stroke="#f5f5f5" />
+          <XAxis
+            dataKey="date"
+            axisLine={false}
+            tickLine={false}
+            tickMargin={10}
+            tick={{ fill: "#aaaa" }}
+          />
+          <YAxis
+            axisLine={false}
+            tickLine={false}
+            tickMargin={10}
+            tick={{ fill: "#aaaa" }}
+          />
+          <Tooltip />
+          <Line
+            type="monotone"
+            dataKey={xLabelKey}
+            stroke="#5b21b6"
+            strokeWidth={4}
+          />
+        </LineChart>
+      </ResponsiveContainer>
     </div>
   );
 };
