@@ -24,9 +24,9 @@ const AccountPage = async ({ searchParams }) => {
   if (page) {
     return (
       <>
-        <PageSettingsForm page={page} user={session.user} />
-        <PageButtonsForm page={page} user={session.user} />
-        <PageLinksForm page={page} user={session.user} />
+        <PageSettingsForm page={leanPage} user={session.user} />
+        <PageButtonsForm page={leanPage} user={session.user} />
+        <PageLinksForm page={leanPage} user={session.user} />
       </>
     );
   }
