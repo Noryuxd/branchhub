@@ -91,7 +91,7 @@ const PageLinksForm = ({ page, user }) => {
         <div>
           <ReactSortable handle={".handle"} list={links} setList={setLinks}>
             {links.map((link) => (
-              <div key={link.key} className="mt-8 flex gap-8 items-center">
+              <div key={link.key} className="mt-8 md:flex gap-8 items-center">
                 <div className="handle">
                   <FontAwesomeIcon
                     className="text-gray-700 mr-2 cursor-pointer hover:text-violet-800 h-5 w-5 py-2 px-2"
@@ -129,7 +129,7 @@ const PageLinksForm = ({ page, user }) => {
                     <button
                       type="button"
                       onClick={() => removeLink(link.key)}
-                      className="text-gray-700 hover:text-violet-800 border  py-2 px-2 mb-2 h-full flex gap-1 items-center"
+                      className="text-gray-700 justify-center w-full hover:text-violet-800 border  py-2 px-2 mb-2 h-full flex gap-1 items-center"
                     >
                       <FontAwesomeIcon icon={faTrash} />
                       <span>Remove this link</span>

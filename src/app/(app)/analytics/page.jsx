@@ -18,30 +18,30 @@ const AnalyticsPage = async () => {
   }
   const page = await Page.findOne({ owner: session.user.email });
 
-  const groupedViews = await Event.aggregate(
-    [
-      {
-        $match: {
-          type: "view",
-          uri: page.uri,
-        },
+  const groupedViews = await Event.aggregate([
+    {
+      $match: {
+        type: "view",
+        uri: page.uri,
       },
-      {
-        $group: {
-          _id: {
-            $dateToString: {
-              date: "$createdAt",
-              format: "%Y-%m-%d",
-            },
-          },
-          count: {
-            $count: {},
+    },
+    {
+      $group: {
+        _id: {
+          $dateToString: {
+            date: "$createdAt",
+            format: "%Y-%m-%d",
           },
         },
+        count: {
+          $count: {},
+        },
       },
-    ]
-    // { $order: "-_id" }
-  );
+    },
+    {
+      $sort: { _id: 1 },
+    },
+  ]);
 
   const clicks = await Event.find({ page: page.uri, type: "click" });
 
@@ -59,7 +59,7 @@ const AnalyticsPage = async () => {
       <SectionBox>
         <h2 className="text-4xl mb-6 text-center">Clicks</h2>
         {page.links.map((link) => (
-          <div className="flex gap-6 items-center border-t border-gray-200 py-4">
+          <div className="md:flex gap-6 items-center border-t border-gray-200 py-4">
             <div className=" text-violet-800 pl-4">
               <FontAwesomeIcon icon={faLink} />
             </div>
@@ -72,7 +72,7 @@ const AnalyticsPage = async () => {
                 {link.url}
               </a>
             </div>
-            <div className="border-2 border-violet-800 p-4">
+            <div className="border-2 border-violet-800 p-4 mt-1 md:mt-0">
               <div className="text-center">
                 <div className="text-3xl text-violet-800">
                   {
@@ -85,7 +85,7 @@ const AnalyticsPage = async () => {
                 <div className=" uppercase font-bold">Clicks Today</div>
               </div>
             </div>
-            <div className="border-2 border-violet-800 p-4">
+            <div className="border-2 border-violet-800 p-4 mt-1 md:mt-0">
               <div className="text-center">
                 <div className="text-3xl text-violet-800">
                   {clicks.filter((click) => click.uri === link.url).length}

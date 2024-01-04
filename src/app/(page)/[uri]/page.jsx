@@ -85,6 +85,7 @@ const UserPage = async ({ params }) => {
       <div className="flex gap-2 justify-center items-center pb-4 mt-4">
         {Object.keys(page.buttons).map((buttonKey) => (
           <Link
+            key={buttonKey}
             href={buttonLink(buttonKey, page.buttons[buttonKey])}
             className="rounded-full bg-violet-800 border border-2 hover:text-violet-800 hover:border-violet-800 hover:bg-white hover:border hover:border-2 text-white p-3 flex justify-center items-center"
           >
@@ -98,6 +99,7 @@ const UserPage = async ({ params }) => {
       <div className="max-w-2xl mx-auto grid md:grid-cols-2 gap-6 p-4 px-2">
         {page.links.map((link) => (
           <Link
+            key={link.url}
             target="_blank"
             ping={"/api/click?url=" + btoa(link.url) + "&page=" + page.uri}
             href={link.url}

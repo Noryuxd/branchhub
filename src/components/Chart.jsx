@@ -2,7 +2,6 @@
 import {
   LineChart,
   CartesianGrid,
-  Legend,
   Line,
   Tooltip,
   XAxis,

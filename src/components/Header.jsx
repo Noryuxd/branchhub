@@ -7,10 +7,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Header = async () => {
   const session = await getServerSession(authOptions);
+
   return (
     <header className="bg-white border-b  py-5">
       <div className="max-w-4xl flex justify-between mx-auto px-6">
-        <div className="flex gap-6">
+        <div className="flex gap-6 ">
           <Link
             href={"/"}
             className="flex items-center font-bold text-violet-800 gap-2"
@@ -18,23 +19,35 @@ const Header = async () => {
             <FontAwesomeIcon icon={faLink} />
             <span>BranchHub</span>
           </Link>
-          <nav className="flex gap-4 items-center text-slate-500 text-sm">
-            <Link href={"/about"}>About</Link>
-            <Link href={"/pricing"}>Pricing</Link>
-            <Link href={"/contact"}>Contact</Link>
+          <nav className="flex gap-4 items-center text-slate-500 ">
+            <Link href={"/about"} className="hover:text-violet-800">
+              About
+            </Link>
+            <Link href={"/pricing"} className="hover:text-violet-800">
+              Pricing
+            </Link>
+            <Link href={"/contact"} className="hover:text-violet-800">
+              Contact
+            </Link>
           </nav>
         </div>
         <nav className="flex gap-5 items-center text-sm text-slate-500">
           {!!session && (
             <>
-              <Link href={"/account"}>Hello, {session?.user?.name}</Link>
+              <Link href={"/account"} className="hover:text-violet-800">
+                Hello, {session?.user?.name}
+              </Link>
               <LogoutButton />
             </>
           )}
           {!session && (
             <>
-              <Link href={"/login"}>Sign In</Link>
-              <Link href={"/login"}>Create Account</Link>
+              <Link href={"/login"} className="hover:text-violet-800 text-xl">
+                Sign In
+              </Link>
+              <Link href={"/login"} className="hover:text-violet-800 text-xl">
+                Create Account
+              </Link>
             </>
           )}
         </nav>

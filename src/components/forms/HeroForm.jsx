@@ -35,11 +35,25 @@ const HeroForm = ({ user }) => {
   return (
     <form
       onSubmit={handleSubmit}
-      className="inline-flex items-center shadow-lg shadow-gray-700/20"
+      className="inline-flex bg-white items-center shadow-lg shadow-gray-700/20"
     >
       <span className="bg-white py-4 pl-4">branchhub.to/</span>
-      <input type="text" className="py-4" placeholder="username" />
-      <button type="submit" className=" bg-violet-800 text-white py-4 px-6">
+      <input
+        type="text"
+        className=""
+        style={{
+          backgroundColor: "white",
+          marginBottom: 0,
+          paddingLeft: 0,
+          paddingTop: 14,
+          paddingBottom: 14,
+        }}
+        placeholder="username"
+      />
+      <button
+        type="submit"
+        className=" bg-violet-800 text-white py-4 px-6 whitespace-nowrap hover:bg-white hover:text-violet-800 border-2 border-white hover:border-violet-800"
+      >
         Join for Free
       </button>
     </form>
