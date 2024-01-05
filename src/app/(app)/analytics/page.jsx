@@ -59,7 +59,7 @@ const AnalyticsPage = async () => {
       <SectionBox>
         <h2 className="text-4xl mb-6 text-center">Clicks</h2>
         {page.links.map((link) => (
-          <div className="md:flex gap-6 items-center border-t border-gray-200 py-4">
+          <div key={link.title} className="md:flex gap-6 items-center border-t border-gray-200 py-4">
             <div className=" text-violet-800 pl-4">
               <FontAwesomeIcon icon={faLink} />
             </div>

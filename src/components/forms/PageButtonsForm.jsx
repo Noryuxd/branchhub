@@ -148,7 +148,7 @@ const PageButtonsForm = ({ user, page }) => {
           setList={setActiveButtons}
         >
           {activeButtons.map((button) => (
-            <div className="mb-4 md:flex items-center">
+            <div key={button.label} className="mb-4 md:flex items-center">
               <div className="w-48 grow flex gap-2 text-gray-700 handle items-center p-2 hover:text-violet-800 cursor-pointer">
                 <FontAwesomeIcon
                   icon={faGripLines}
@@ -179,7 +179,7 @@ const PageButtonsForm = ({ user, page }) => {
         <div className="flex flex-wrap gap-2 mt-4 border-y py-4 text-gray-700">
           {availableButtons.map((button) => (
             <button
-            key={button.key}
+              key={button.key}
               type="button"
               onClick={() => addButtonToProfile(button)}
               className=" flex gap-1 items-center p-2 bg-gray-100 hover:text-violet-800"
