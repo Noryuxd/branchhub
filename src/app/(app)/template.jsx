@@ -1,6 +1,5 @@
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import AppSidebar from "@/components/layout/AppSidebar";
-import { Page } from "@/models/Page";
 import { faBars, faLink } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import mongoose from "mongoose";
@@ -12,6 +11,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { Toaster } from "react-hot-toast";
+import { Page } from "@/models/page";
 
 const lato = Lato({ subsets: ["latin"], weight: ["400", "700"] });
 
