@@ -42,10 +42,10 @@ const Header = async () => {
           )}
           {!session && (
             <>
-              <Link href={"/login"} className="hover:text-violet-800 text-xl">
+              <Link href={"/login"} className="hover:text-violet-800">
                 Sign In
               </Link>
-              <Link href={"/login"} className="hover:text-violet-800 text-xl">
+              <Link href={"/login"} className="hover:text-violet-800">
                 Create Account
               </Link>
             </>
