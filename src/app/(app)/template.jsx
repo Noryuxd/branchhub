@@ -26,7 +26,7 @@ export default async function AppTemplate({ children, ...rest }) {
   if (!session) {
     return redirect("/");
   }
-  mongoose.connect(process.env.MONGO_URI);
+  mongoose.connect(process.env.MONGODB_URI);
   const page = await Page.findOne({ owner: session.user.email });
   return (
     <html lang="en">

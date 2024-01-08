@@ -17,20 +17,7 @@ const AccountPage = async ({ searchParams }) => {
     return null;
   }
 
-  const connectToDatabase = async () => {
-    try {
-      await mongoose.connect(process.env.MONGODB_URI, {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
-      });
-      console.log("Connected to MongoDB");
-    } catch (error) {
-      console.error("Error connecting to MongoDB:", error);
-    }
-  };
-
-  connectToDatabase();
-
+  mongoose.connect(process.env.MONGODB_URI);
   const page = await Page.findOne({ owner: session?.user?.email });
 
   const leanPage = cloneDeep(page.toJSON());
