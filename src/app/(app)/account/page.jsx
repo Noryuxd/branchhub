@@ -9,44 +9,55 @@ import PageButtonsForm from "@/components/forms/PageButtonsForm";
 import PageLinksForm from "@/components/forms/PageLinksForm";
 import cloneDeep from "clone-deep";
 
+
 const AccountPage = async ({ searchParams }) => {
   const session = await getServerSession(authOptions);
   const desiredUsername = searchParams?.desiredUsername;
+
   if (!session) {
     redirect("/");
     return null;
   }
 
-  mongoose.connect(process.env.MONGODB_URI);
-  const page = await Page.findOne({ owner: session?.user?.email });
+  try {
+    await mongoose.connect(process.env.MONGODB_URI);
 
-  if (!page) {
+    const page = await Page.findOne({ owner: session?.user?.email });
+
+    if (!page) {
+      return (
+        <div className=" mt-56">
+          <UsernameForm desiredUsername={desiredUsername} />
+        </div>
+      );
+    }
+
+    const leanPage = cloneDeep(page.toJSON());
+    leanPage._id = leanPage._id.toString();
+
+    if (leanPage && Object.keys(leanPage).length > 0) {
+      return (
+        <>
+          <PageSettingsForm page={leanPage} user={session.user} />
+          <PageButtonsForm page={leanPage} user={session.user} />
+          <PageLinksForm page={leanPage} user={session.user} />
+        </>
+      );
+    } else {
+      return (
+        <div>
+          <p>No data available</p>
+        </div>
+      );
+    }
+  } catch (error) {
+    console.error("Error connecting to MongoDB:", error);
     return (
       <div>
-        <UsernameForm desiredUsername={desiredUsername} />
+        <p>Error connecting to the database</p>
       </div>
     );
   }
-
-  const leanPage = cloneDeep(page.toJSON());
-  leanPage._id = leanPage._id.toString();
-
-  if (Object.keys(leanPage).length > 0) {
-    return (
-      <>
-        <PageSettingsForm page={leanPage} user={session.user} />
-        <PageButtonsForm page={leanPage} user={session.user} />
-        <PageLinksForm page={leanPage} user={session.user} />
-      </>
-    );
-  }
-
-  return (
-    <div>
-      {/* Handle the case when leanPage is empty */}
-      <p>No data available</p>
-    </div>
-  );
 };
 
 export default AccountPage;

@@ -111,7 +111,7 @@ export const allButtons = [
 ];
 
 const PageButtonsForm = ({ user, page }) => {
-  const pageSavedButtonsKeys = Object.keys(page.buttons);
+  const pageSavedButtonsKeys = page.buttons ? Object.keys(page.buttons) : [];
   const pageSavedButtonsInfo = pageSavedButtonsKeys.map((key) =>
     allButtons.find((button) => button.key === key)
   );
