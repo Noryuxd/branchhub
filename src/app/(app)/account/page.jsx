@@ -20,22 +20,23 @@ const AccountPage = async ({ searchParams }) => {
   mongoose.connect(process.env.MONGODB_URI);
   const page = await Page.findOne({ owner: session?.user?.email });
 
-  const leanPage = cloneDeep(page.toJSON());
-  leanPage._id = leanPage._id.toString();
-  if (page) {
+  if (!page) {
     return (
-      <>
-        <PageSettingsForm page={leanPage} user={session.user} />
-        <PageButtonsForm page={leanPage} user={session.user} />
-        <PageLinksForm page={leanPage} user={session.user} />
-      </>
+      <div>
+        <UsernameForm desiredUsername={desiredUsername} />
+      </div>
     );
   }
 
+  const leanPage = cloneDeep(page.toJSON());
+  leanPage._id = leanPage._id.toString();
+
   return (
-    <div>
-      <UsernameForm desiredUsername={desiredUsername} />
-    </div>
+    <>
+      <PageSettingsForm page={leanPage} user={session.user} />
+      <PageButtonsForm page={leanPage} user={session.user} />
+      <PageLinksForm page={leanPage} user={session.user} />
+    </>
   );
 };
 
