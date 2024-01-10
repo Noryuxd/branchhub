@@ -31,12 +31,21 @@ const AccountPage = async ({ searchParams }) => {
   const leanPage = cloneDeep(page.toJSON());
   leanPage._id = leanPage._id.toString();
 
+  if (Object.keys(leanPage).length > 0) {
+    return (
+      <>
+        <PageSettingsForm page={leanPage} user={session.user} />
+        <PageButtonsForm page={leanPage} user={session.user} />
+        <PageLinksForm page={leanPage} user={session.user} />
+      </>
+    );
+  }
+
   return (
-    <>
-      <PageSettingsForm page={leanPage} user={session.user} />
-      <PageButtonsForm page={leanPage} user={session.user} />
-      <PageLinksForm page={leanPage} user={session.user} />
-    </>
+    <div>
+      {/* Handle the case when leanPage is empty */}
+      <p>No data available</p>
+    </div>
   );
 };
 
