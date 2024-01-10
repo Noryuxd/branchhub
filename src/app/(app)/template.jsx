@@ -12,6 +12,7 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import { Toaster } from "react-hot-toast";
 import { Page } from "@/models/page";
+import Footer from "@/components/Footer";
 
 const lato = Lato({ subsets: ["latin"], weight: ["400", "700"] });
 

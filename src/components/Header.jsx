@@ -23,10 +23,10 @@ const Header = async () => {
             <Link href={"/about"} className="hover:text-violet-800">
               About
             </Link>
-            <Link href={"/pricing"} className="hover:text-violet-800">
-              Pricing
-            </Link>
-            <Link href={"/contact"} className="hover:text-violet-800">
+            <Link
+              href={"/Noryu"}
+              className="hover:text-violet-800"
+            >
               Contact
             </Link>
           </nav>
