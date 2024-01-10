@@ -2,7 +2,7 @@
 BranchHub is a Linktree clone built with Next.js, Tailwind CSS, and MongoDB. Create a beautiful, customizable landing page with links to your social profiles, projects, and more.
 
   <p align="center">
-  <a href="https://noryu-branchhub.vercel.app/" style="font-size: 4em;">Live Preview Here</a>
+  <a href="https://noryu-branchhub.vercel.app/" target="_blank" style="font-size: 4em;">Live Preview Here</a>
 </p>
 
 
