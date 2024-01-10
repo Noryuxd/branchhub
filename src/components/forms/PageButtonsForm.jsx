@@ -161,7 +161,7 @@ const PageButtonsForm = ({ user, page }) => {
                 <input
                   placeholder={button.placeholder}
                   name={button.key}
-                  defaultValue={page.buttons[button.key]}
+                  defaultValue={page?.buttons?.[button.key]}
                   type="text"
                   style={{ marginBottom: "0" }}
                 />
