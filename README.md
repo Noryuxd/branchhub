@@ -1,5 +1,4 @@
-# BranchHub
-
+<h1 align="center">BranchHub</h1>
 BranchHub is a Linktree clone built with Next.js, Tailwind CSS, and MongoDB. Create a beautiful, customizable landing page with links to your social profiles, projects, and more.
 
   <p align="center">
