@@ -11,8 +11,18 @@ import {
 import { addDays, differenceInDays, formatISO9075, parseISO } from "date-fns";
 
 const Chart = ({ data }) => {
+  if (!data || data.length === 0) {
+    // Handle the case when data is empty
+    return (
+      <div className="text-center text-2xl text-violet-500">
+        No data available for the chart. <br />
+        <span className="text-sm text-center text-gray-400">
+          Visit your public page atleast once
+        </span>
+      </div>
+    );
+  }
   const xLabelKey = Object.keys(data[0]).find((key) => key !== "date");
-  //282882
   const dataWithoutGaps = [];
   data.forEach((value, index) => {
     const date = value.date;
