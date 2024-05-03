@@ -25,6 +25,8 @@ const AboutPage = () => {
           <div className=" items-center  w-48 h-64 justify-center bg-white border-2 border-violet-800 rounded-lg shadow p-6">
             <FontAwesomeIcon
               icon={faUsers}
+              width={32}
+              height={32}
               className="text-2xl w-32 h-32 text-violet-800 mb-2"
               fixedWidth
             />
@@ -34,6 +36,8 @@ const AboutPage = () => {
           </div>
           <div className=" items-center  w-48 h-64 justify-center bg-white border-2 border-violet-800 rounded-lg shadow p-6">
             <FontAwesomeIcon
+              width={32}
+              height={32}
               icon={faDollarSign}
               className="text-2xl w-32 h-32 text-violet-800 mb-2"
               fixedWidth
@@ -44,6 +48,8 @@ const AboutPage = () => {
           </div>
           <div className="items-center w-48 h-64 justify-center bg-white border-2 border-violet-800 rounded-lg shadow p-6">
             <FontAwesomeIcon
+              width={32}
+              height={32}
               icon={faCheckCircle}
               className="text-2xl w-32 h-32 text-violet-800 mb-2"
               fixedWidth
@@ -55,6 +61,8 @@ const AboutPage = () => {
           <div className="items-center justify-center w-48 h-64 bg-white border-2 border-violet-800 rounded-lg shadow p-6">
             <FontAwesomeIcon
               icon={faChartLine}
+              width={32}
+              height={32}
               className="text-2xl w-32 h-32 text-violet-800 mb-2"
               fixedWidth
             />
