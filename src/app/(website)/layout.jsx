@@ -1,7 +1,8 @@
 import { Lato } from "next/font/google";
 import "../globals.css";
 import Header from "@/components/Header";
-import Footer from "@/components/Footer";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 
 const lato = Lato({ subsets: ["latin"], weight: ["400", "700"] });
 
@@ -16,9 +17,30 @@ export default function RootLayout({ children }) {
       <body className={lato.className}>
         <main>
           <Header />
-          <div className="p-6 max-w-4xl mx-auto">{children}</div>
+          <div className="p-6 max-w-5xl mx-auto">{children}</div>
+          <section className="h-48 w-full flex justify-center items-center bg-violet-800">
+            <div className="max-w-lg mx-auto">
+              <h2 className="text-3xl mt-4 font-bold text-white text-center mb-8">
+                Contact Us
+              </h2>
+              <form className="flex flex-col items-center">
+                <div className="flex">
+                  <input
+                    type="email"
+                    placeholder="Your email"
+                    className="w-64 px-4 py-2 text-violet-800 h-12 mb-4 rounded-l-md border-none focus:outline-none"
+                  />
+                  <button className="bg-white text-violet-800 h-12 px-4 py-2 rounded-r-md text-lg font-bold hover:bg-violet-800 hover:text-white hover:border-white-800 hover:border transition-colors duration-300">
+                    <FontAwesomeIcon
+                      icon={faArrowRight}
+                      className="w-6 h-6 items-center flex"
+                    />
+                  </button>
+                </div>
+              </form>
+            </div>
+          </section>
         </main>
-        <Footer />
       </body>
     </html>
   );

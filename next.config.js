@@ -8,6 +8,9 @@ const nextConfig = {
       {
         hostname: "branchhub.s3.amazonaws.com",
       },
+      {
+        hostname: "i.ibb.co",
+      },
     ],
   },
 };

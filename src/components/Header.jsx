@@ -24,7 +24,7 @@ const Header = async () => {
               About
             </Link>
             <Link
-              href={"/Noryu"}
+              href={"/BranchHUB"}
               className="hover:text-violet-800"
             >
               Contact

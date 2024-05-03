@@ -3,7 +3,7 @@ import LoginWithGoogle from "@/components/buttons/LoginWithGoogle";
 const LoginPage = () => {
   return (
     <div>
-      <div className=" p-4 max-w-xs mx-auto">
+      <div className=" mt-24 mb-48 p-4 max-w-xs mx-auto">
         <h1 className="text-4xl font-bold text-violet-800 text-center mb-6">
           Sign In
         </h1>
