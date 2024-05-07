@@ -23,7 +23,7 @@ export default async function Home() {
           <img
             src="https://i.ibb.co/c8wRCLF/Portfolio-rafiki.png"
             alt="Portfolio"
-            className="2xl:w-[800px] md:w-[650px] sm:w-0 "
+            className="2xl:w-[800px] lg:w-[650px] w-0"
           />
         </div>
       </div>
@@ -31,7 +31,7 @@ export default async function Home() {
         <h2 className="text-5xl font-bold text-violet-800 text-center mb-16">
           Our Services
         </h2>
-        <div className="flex justify-between gap-10 mx-[-120px] ">
+        <div className="flex justify-between gap-10 mx-[-80px] ">
           <div className="flex items-center max-w-md">
             <div className="w-full">
               <img
@@ -41,7 +41,7 @@ export default async function Home() {
               />
             </div>
             <div className="w-1/2 pl-8">
-              <p className="font-bold text-violet-800">
+              <p className="font-bold text-2xl text-violet-800">
                 Social Media Management
               </p>
             </div>
@@ -49,7 +49,7 @@ export default async function Home() {
 
           <div className="flex items-center max-w-md">
             <div className="w-1/2 pr-8">
-              <p className="font-bold text-end text-violet-800">
+              <p className="font-bold text-end text-2xl text-violet-800">
                 Personal Branding Consultation
               </p>
             </div>
@@ -62,7 +62,7 @@ export default async function Home() {
             </div>
           </div>
         </div>
-        <div className="flex justify-between gap-10 mx-[-120px] ">
+        <div className="flex justify-between gap-10 mx-[-80px] ">
           <div className="flex items-center max-w-md">
             <div className="w-full">
               <img
@@ -72,7 +72,7 @@ export default async function Home() {
               />
             </div>
             <div className="w-1/2 pl-8">
-              <p className="font-bold  text-violet-800">
+              <p className="font-bold text-2xl  text-violet-800">
                 Digital Marketing Campaigns
               </p>
             </div>
@@ -80,7 +80,7 @@ export default async function Home() {
 
           <div className="flex items-center max-w-md">
             <div className="w-1/2 pr-8">
-              <p className="font-bold text-end text-violet-800">
+              <p className="font-bold text-end text-2xl text-violet-800">
                 Website Design & Development
               </p>
             </div>

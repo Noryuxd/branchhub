@@ -23,10 +23,12 @@ export default function RootLayout({ children }) {
               <h2 className="text-3xl mt-4 font-bold text-white text-center mb-8">
                 Contact Us
               </h2>
-              <form className="flex flex-col items-center">
+              <form action="https://formspree.io/f/mrgnjvne" method="POST" className="flex flex-col items-center">
                 <div className="flex">
                   <input
                     type="email"
+                    name="email"
+                    required
                     placeholder="Your email"
                     className="w-64 px-4 py-2 text-violet-800 h-12 mb-4 rounded-l-md border-none focus:outline-none"
                   />
