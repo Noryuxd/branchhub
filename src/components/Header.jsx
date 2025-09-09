@@ -25,7 +25,7 @@ const Header = async () => {
             </Link>
             <Link
               href={"/BranchHUB"}
-              className="hover:text-violet-800"
+              className="hover:text-violet-800" target="_blank"
             >
               Contact
             </Link>

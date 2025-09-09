@@ -125,55 +125,6 @@ const AboutPage = () => {
             </div>
           </div>
         </div>
-        <div className="bg-gray-100 py-12">
-          <div className="max-w-12xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-3xl font-bold text-center text-violet-800 mb-8">
-              Our Team Members
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {/* Team Member 1 */}
-              <div className="bg-white border border-violet-800 shadow rounded-lg overflow-hidden">
-                <div className="p-4">
-                  <img
-                    src="https://e7.pngegg.com/pngimages/84/165/png-clipart-united-states-avatar-organization-information-user-avatar-service-computer-wallpaper-thumbnail.png"
-                    alt="Team Member 1"
-                    className="w-full h-48 object-cover object-center mb-4 rounded-lg"
-                  />
-                  <h3 className="text-xl font-semibold text-violet-800 mb-2">
-                    Ababsa Rabii
-                  </h3>
-                  <p className="text-gray-600">Co-founder & CEO</p>
-                </div>
-              </div>
-              <div className="bg-white border border-violet-800 shadow rounded-lg overflow-hidden">
-                <div className="p-4">
-                  <img
-                    src="https://e7.pngegg.com/pngimages/84/165/png-clipart-united-states-avatar-organization-information-user-avatar-service-computer-wallpaper-thumbnail.png"
-                    alt="Team Member 2"
-                    className="w-full h-48 object-cover object-center mb-4 rounded-lg"
-                  />
-                  <h3 className="text-xl font-semibold text-violet-800 mb-2">
-                    Ahmed Bachir El Mahmoudi
-                  </h3>
-                  <p className="text-gray-600">Co-founder & CTO</p>
-                </div>
-              </div>
-              <div className="bg-white border border-violet-800 shadow rounded-lg overflow-hidden">
-                <div className="p-4">
-                  <img
-                    src="https://e7.pngegg.com/pngimages/84/165/png-clipart-united-states-avatar-organization-information-user-avatar-service-computer-wallpaper-thumbnail.png"
-                    alt="Adil Laghfour"
-                    className="w-full h-48 object-cover object-center mb-4 rounded-lg"
-                  />
-                  <h3 className="text-xl font-semibold text-violet-800 mb-2">
-                    Adil Laghfour
-                  </h3>
-                  <p className="text-gray-600">UI/UX Designer</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   );
